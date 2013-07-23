@@ -1,12 +1,27 @@
 doctype 5
 html
-  head
-    title= title
-    link(rel='stylesheet', href='css/layout.css') 
-    script(src='js/lib/bootstrap/bootstrap.min.js')
-    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
-    link(rel='stylesheet', href='css/lib/bootstrap/bootstrap.min.css')
-    link(rel='stylesheet', href='css/lib/bootstrap/bootstrap-responsive.min.css')
-  body
-    block content
-    block footer
+	head
+	title= title
+	link(rel='stylesheet', href='/css/layout.css') 
+	script(src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
+	script(src='/js/lib/bootstrap/bootstrap.min.js')
+	link(rel='stylesheet', href='/css/lib/bootstrap/bootstrap.min.css')
+	link(rel='stylesheet', href='/css/lib/bootstrap/bootstrap-responsive.min.css')
+	block head
+body
+	div.container-fluid
+		div.row-fluid#header-section
+			div.span12
+				block header
+		div.row-fluid#flash
+			div.span6.offset5
+				block flash
+		div.row-fluid#nav-section
+			div.span4.offset4
+				include includes/navbar
+		div.row-fluid#content-section
+			div.span12
+				block content
+		div.row-fluid#footer-section
+			div.span12.footer
+				block footer

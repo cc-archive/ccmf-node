@@ -16,6 +16,7 @@ app.configure(function(){
 	app.set('port', process.env.PORT || 80);
 	app.set('env','development');
 	app.set('views', __dirname + '/views');
+	app.set('layout',__dirname+'/views/templates/layout')
 	app.set('view engine', 'jade');
 	app.use(express.favicon());
 	app.use(express.logger('dev'));
@@ -43,7 +44,7 @@ require('./routes/texts')(app);
 
 // 404 - Catch all unrouted request
 app.use(function(req, res, next){
-	  res.send(404, 'Sorry cant find that!');
+	  res.send(404, 'Resource does not exist.');
 });
 
 /* Create Server */

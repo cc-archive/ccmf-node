@@ -1,0 +1,32 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background:#fff;
+}
+
+.container-fluid {
+    margin: 0 auto;
+    height: 100%;
+    padding: 20px 0;
+ 
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#topnav-section{
+	height:10%;
+}
+
+#header-section{
+	height:15%;
+}
+
+#content-section{
+	height:70%;
+}
+
+#footer-section{
+	height:5%;
+}

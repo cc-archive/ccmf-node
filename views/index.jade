@@ -1,5 +1,31 @@
 extends layout
 
+block head
+	link(rel='stylesheet', href='css/index.css')
+block header
+	div.row-fluid
+		div.span8.offset3
+			h1= title
+block flash
+	p
+		|	Track Your Contents 
+		|	Across the Web!
 block content
-  h1= title
-  p Welcome to #{title}
+	div.row-fluid
+		div.span2.offset5
+			div#myCarousel.carousel.slide
+				ol.carousel-indicators
+					li.active('data-target'='#myCarousel',data-slide-to='0')
+					li('data-target'='#myCarousel',data-slide-to='1')
+					li('data-target'='#myCarousel',data-slide-to='2')
+					li('data-target'='#myCarousel',data-slide-to='3')
+				div.carousel-inner
+					div.active.item
+						img(src='https://s3-ap-southeast-1.amazonaws.com/ccmf/img/1.jpg')
+					div.item
+						img(src='https://s3-ap-southeast-1.amazonaws.com/ccmf/img/2.jpg')
+					div.item
+						img(src='https://s3-ap-southeast-1.amazonaws.com/ccmf/img/3.jpg')
+					div.item
+				a.carousel-control.left(href='#myCarousel',data-slide='prev')&lsaquo;
+				a.carousel-control.right(href='#myCarousel',data-slide='next')&rsaquo;

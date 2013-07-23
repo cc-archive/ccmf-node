@@ -1,0 +1,27 @@
+head
+	link(rel='stylesheet', href='/css/includes/navbar.css')
+div.navbar
+		div.navbar-inner
+			ul.nav
+				li.active	
+					a(href='/') Home
+				li.divider-vertical
+				li.dropdown
+					a(href='texts',data-toggle='dropdown').dropdown-toggle Texts
+						b.caret
+					ul.dropdown-menu
+						li
+							a(href='/texts/compare') Compare
+						li
+							a(href='/texts/register') Register
+						li
+							a(href='/texts/search')	Search
+				li.divider-vertical
+				li.dropdown
+					a(href='texts',data-toggle='dropdown').dropdown-toggle Images
+				li.divider-vertical
+				li.dropdown
+					a(href='texts',data-toggle='dropdown').dropdown-toggle Videos
+				li.divider-vertical
+				li
+					a(href='https://github.com/ethanlim/ccmf') Source
