@@ -20,8 +20,12 @@ html, body {
 }
 
 #header-section{
-	height:15%;
+	height: 12%;
 }
+
+#flash-section{
+	margin-bottom:2%;
+}	
 
 #content-section{
 	height:70%;
