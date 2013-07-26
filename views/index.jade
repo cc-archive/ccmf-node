@@ -4,7 +4,8 @@ block head
 	link(rel='stylesheet', href='css/index.css')
 block header
 	div.row-fluid
-		div.span8.offset3
+		div.span9.offset3
+			img(id='ccmf-logo',src='https://s3-ap-southeast-1.amazonaws.com/ccmf/img/logos/cc.small.jpg')
 			h1= title
 block flash
 	p
@@ -12,7 +13,7 @@ block flash
 		|	Across the Web!
 block content
 	div.row-fluid
-		div.span2.offset5
+		div.span4.offset4
 			div#myCarousel.carousel.slide
 				ol.carousel-indicators
 					li.active('data-target'='#myCarousel',data-slide-to='0')
@@ -21,12 +22,37 @@ block content
 					li('data-target'='#myCarousel',data-slide-to='3')
 				div.carousel-inner
 					div.active.item
-						img(src='https://s3-ap-southeast-1.amazonaws.com/ccmf/img/1.jpg')
+						img(src='https://s3-ap-southeast-1.amazonaws.com/ccmf/img/carousel/1.jpg')
+						div.carousel-caption
+							h4 Protect your copyrighted documents.
+							p
+								| Register your documents with us today 
+								| and CCMF library would
+								| alert you when your copyright is infringed 
+								| on the open web.
+							a(href='/texts/index/') More Info 
 					div.item
-						img(src='https://s3-ap-southeast-1.amazonaws.com/ccmf/img/2.jpg')
+						img(src='https://s3-ap-southeast-1.amazonaws.com/ccmf/img/carousel/2.jpg')
+						div.carousel-caption
+							h4 Image Recognition and Identification (Active Development)
+							p
+								| In the near future, CCMF library would
+								| identify similar images on the web.
+							a(href='/images/index/') More Info 
 					div.item
-						img(src='https://s3-ap-southeast-1.amazonaws.com/ccmf/img/3.jpg')
+						img(src='https://s3-ap-southeast-1.amazonaws.com/ccmf/img/carousel/3.jpg')
+						div.carousel-caption
+							h4 Video Media Categorisation and Frame-by-Frame Identification (Active Development)
+							p
+								| Moving forward to the video media, CCMF aims to detect copyrighted images
+								| that are embedded within video footage.
+							a(href='/videos/index/') More Info 
 					div.item
-						img(src='https://s3-ap-southeast-1.amazonaws.com/ccmf/img/4.jpg')
+						img(src='https://s3-ap-southeast-1.amazonaws.com/ccmf/img/carousel/4.jpg')
+						div.carousel-caption
+							h4 
+							p
+								| Learn how Creative Commons promotes sharing of copyrighted creative works today!
+							a(href='http://creativecommons.org') More Info
 				a.carousel-control.left(href='#myCarousel',data-slide='prev')&lsaquo;
 				a.carousel-control.right(href='#myCarousel',data-slide='next')&rsaquo;
