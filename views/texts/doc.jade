@@ -1,6 +1,9 @@
 extends ../layout
 
+block head
+	link(rel='stylesheet', href='/css/views/texts/doc.css') 
+	script(src='/js/views/texts/doc.js')
 block header
 	div.row-fluid
-		div.span8.offset5
+		div.span8.offset4#header
 			h1= title
