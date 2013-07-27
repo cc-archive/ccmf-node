@@ -1,15 +1,19 @@
 head
-	link(rel='stylesheet', href='/css/includes/navbar.css')
+	link(rel='stylesheet', href='/css/views/includes/navbar.css')
+	script(src='/js/views/includes/navbar.js')
 div.navbar
 		div.navbar-inner
-			ul.nav
-				li.active	
+			ul.nav#navbar-items
+				li.active
 					a(href='/') Home
 				li.divider-vertical
 				li.dropdown
-					a(href='texts',data-toggle='dropdown').dropdown-toggle Texts
+					a(data-toggle='dropdown').dropdown-toggle Texts
 						b.caret
 					ul.dropdown-menu
+						li
+							a(href='/texts/doc') Documentation
+						li.divider
 						li
 							a(href='/texts/compare') Compare
 						li
@@ -18,10 +22,18 @@ div.navbar
 							a(href='/texts/search')	Search
 				li.divider-vertical
 				li.dropdown
-					a(href='texts',data-toggle='dropdown').dropdown-toggle Images
+					a(data-toggle='dropdown').dropdown-toggle Images
+						b.caret
+					ul.dropdown-menu
+						li
+							a(href='/images/doc') Documentation
 				li.divider-vertical
 				li.dropdown
-					a(href='texts',data-toggle='dropdown').dropdown-toggle Videos
+					a(data-toggle='dropdown').dropdown-toggle Videos
+						b.caret
+					ul.dropdown-menu
+						li
+							a(href='/videos/doc') Documentation
 				li.divider-vertical
 				li
 					a(href='/infos/about') About
