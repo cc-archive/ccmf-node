@@ -1,6 +1,31 @@
 extends ../layout
 
+//- CCMF Library
+block head
+	link(rel='stylesheet', href='/css/views/texts/compare.css')
+	script(src='/js/views/texts/compare.js')
+	script(src='/js/lib/ccmf/src/core.js')
+	script(src='/js/lib/ccmf/src/hash.js')
+	script(src='/js/lib/ccmf/src/text.js')
+	script(src='/js/lib/ccmf/src/worker.js')
 block header
 	div.row-fluid
 		div.span8.offset5
 			h1= title
+block content
+	div.row-fluid.offset3
+		header Instructions
+		article 
+				| Insert two textual content into each  
+				| textbox and click compare to determine 
+				| the level of similarity between them.
+	div.row-fluid.offset3
+		section#a-compare
+			h4 A
+			textarea#a-tb
+		section#result.offset1
+		section#b-compare.offset3
+			h4 B
+			textarea#b-tb
+	div.row-fluid.offset5
+		button(type='button')#compare-btn.btn Compare

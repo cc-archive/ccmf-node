@@ -1,0 +1,8 @@
+section#a-compare{
+	float:left;
+}
+
+section#a-compare > textarea,
+section#b-compare > textarea{
+	height:300px;
+}
