@@ -5,6 +5,11 @@ html, body {
     background:#fff;
 }
 
+header{
+	font-size: 25px;
+	margin-bottom: 1%;
+}
+
 .container-fluid {
     margin: 0 auto;
     height: 100%;
