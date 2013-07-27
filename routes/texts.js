@@ -3,9 +3,9 @@
  */
 
 module.exports = function(app){
-	
-	app.get('/texts',function(req,res){
-		res.render('texts/index',{title:'Text Functionalities'});
+		
+	app.get('/texts/doc',function(req,res){
+		res.render('texts/doc',{title:'Text API Documentation'});
 	});
 	
 	app.get('/texts/compare',function(req,res){

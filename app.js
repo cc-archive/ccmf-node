@@ -41,6 +41,8 @@ if('production'==app.get('env')){
 require('./routes/index')(app);
 require('./routes/users')(app);
 require('./routes/texts')(app);
+require('./routes/images')(app);
+require('./routes/videos')(app);
 
 // 404 - Catch all unrouted request
 app.use(function(req, res, next){
