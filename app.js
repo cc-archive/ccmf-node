@@ -43,6 +43,7 @@ require('./routes/users')(app);
 require('./routes/texts')(app);
 require('./routes/images')(app);
 require('./routes/videos')(app);
+require('./routes/infos')(app);
 
 // 404 - Catch all unrouted request
 app.use(function(req, res, next){
