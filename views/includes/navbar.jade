@@ -1,13 +1,13 @@
 head
 	link(rel='stylesheet', href='/css/views/includes/navbar.css')
 	script(src='/js/views/includes/navbar.js')
-div.navbar
+div.navbar#navbar-mid
 		div.navbar-inner
-			ul.nav#navbar-items
-				li.active
+			ul.nav.navbar-items
+				li.active.menu-item
 					a(href='/') Home
 				li.divider-vertical
-				li.dropdown
+				li.dropdown.menu-item
 					a(data-toggle='dropdown').dropdown-toggle Texts
 						b.caret
 					ul.dropdown-menu
@@ -21,22 +21,22 @@ div.navbar
 						li
 							a(href='/texts/compare') Compare
 				li.divider-vertical
-				li.dropdown
+				li.dropdown.menu-item
 					a(data-toggle='dropdown').dropdown-toggle Images
 						b.caret
 					ul.dropdown-menu
 						li
 							a(href='/images/doc') Documentation
 				li.divider-vertical
-				li.dropdown
+				li.dropdown.menu-item
 					a(data-toggle='dropdown').dropdown-toggle Videos
 						b.caret
 					ul.dropdown-menu
 						li
 							a(href='/videos/doc') Documentation
-				li.divider-vertical
-				li
+			ul.nav.pull-right.navbar-items
+				li.menu-item
 					a(href='/infos/about') About
 				li.divider-vertical
-				li
+				li.menu-item
 					a(href='https://github.com/ethanlim/ccmf') Source
