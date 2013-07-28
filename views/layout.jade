@@ -2,6 +2,7 @@ doctype 5
 html
 	head
 	title= title
+	link(rel='icon',href='https://s3-ap-southeast-1.amazonaws.com/ccmf/img/logos/favicon.ico',type='image/x-icon')
 	link(rel='stylesheet', href='/css/layout.css') 
 	script(src='/js/layout.js')
 	script(src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
@@ -10,6 +11,9 @@ html
 	link(rel='stylesheet', href='/css/lib/bootstrap/bootstrap-responsive.min.css')
 	block head
 body
+	div.row-fluid#banner-section
+		div.span12
+			include includes/banner
 	div.container-fluid
 		div.row-fluid#header-section
 			div.span12
