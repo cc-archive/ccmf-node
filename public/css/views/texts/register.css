@@ -5,3 +5,7 @@ section#instructions-area{
 section#register-area > textarea{
 	height:300px;
 }
+
+#result{
+	margin-bottom: 2%;
+}

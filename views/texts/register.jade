@@ -3,6 +3,11 @@ extends ../layout
 block head
 	link(rel='stylesheet', href='/css/views/texts/register.css')
 	script(src='/js/views/texts/register.js')
+	script(src='/js/lib/ccmf/src/core.js')
+	script(src='/js/lib/ccmf/src/hash.js')
+	script(src='/js/lib/ccmf/src/text.js')
+	script(src='/js/lib/ccmf/src/worker.js')
+	script(src='/js/lib/ccmf/src/data.js')
 block header
 	div.row-fluid
 		div.span8.offset5
@@ -17,5 +22,8 @@ block content
 	div.row-fluid.offset3
 		section#register-area
 			textarea.span5
+	div.row-fluid.offset5
+		section#result
+			span
 	div.row-fluid.offset5
 		button(type='button')#register-btn.btn Register
