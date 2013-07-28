@@ -9,6 +9,7 @@ html
 	script(src='/js/lib/bootstrap/bootstrap.min.js')
 	link(rel='stylesheet', href='/css/lib/bootstrap/bootstrap.min.css')
 	link(rel='stylesheet', href='/css/lib/bootstrap/bootstrap-responsive.min.css')
+	script(src='https://cdn.firebase.com/v0/firebase.js')
 	block head
 body
 	div.row-fluid#banner-section
@@ -20,7 +21,7 @@ body
 				block header
 		div.row-fluid#flash-section
 			div.span6.offset5
-				block flash
+				include includes/flash
 		div.row-fluid#nav-section
 			div.span6.offset3
 				include includes/navbar
