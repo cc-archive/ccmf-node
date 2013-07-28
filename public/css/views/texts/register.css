@@ -1,0 +1,7 @@
+section#instructions-area{
+	margin-bottom:2%;
+}
+
+section#register-area > textarea{
+	height:300px;
+}

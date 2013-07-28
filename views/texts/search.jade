@@ -1,14 +1,24 @@
 extends ../layout
 
+block head
+	link(rel='stylesheet', href='/css/views/texts/search.css')
+	script(src='/js/views/texts/search.js')
 block header
 	div.row-fluid
 		div.span8.offset5
 			h1= title
 block content
 	div.row-fluid.offset3
-		header Instructions
-		article 
-				| Insert two textual content into each  
-				| textbox and click compare to determine 
-				| the level of similarity between them.
+		section#instructions-area
+			header Instructions
+			article 
+					| Insert the text content and search the registry 
+					| for similar texts.
 	div.row-fluid.offset3
+		section#search-area
+			textarea.span5
+	div.row-fluid.offset5
+		button(type='button')#search-btn.btn Search
+	div.row-fluid.offset3
+		section#result-area
+			

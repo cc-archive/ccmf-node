@@ -1,6 +1,21 @@
 extends ../layout
 
+block head
+	link(rel='stylesheet', href='/css/views/texts/register.css')
+	script(src='/js/views/texts/register.js')
 block header
 	div.row-fluid
 		div.span8.offset5
 			h1= title
+block content
+	div.row-fluid.offset3
+		section#instructions-area
+			header Instructions
+			article 
+					| Insert the text content into the registry.  
+					| All texts crawled on the web would compare to this registry.
+	div.row-fluid.offset3
+		section#register-area
+			textarea.span5
+	div.row-fluid.offset5
+		button(type='button')#register-btn.btn Register
