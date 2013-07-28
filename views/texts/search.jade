@@ -3,6 +3,11 @@ extends ../layout
 block head
 	link(rel='stylesheet', href='/css/views/texts/search.css')
 	script(src='/js/views/texts/search.js')
+	script(src='/js/lib/ccmf/src/core.js')
+	script(src='/js/lib/ccmf/src/hash.js')
+	script(src='/js/lib/ccmf/src/text.js')
+	script(src='/js/lib/ccmf/src/worker.js')
+	script(src='/js/lib/ccmf/src/data.js')
 block header
 	div.row-fluid
 		div.span8.offset5
@@ -21,4 +26,11 @@ block content
 		button(type='button')#search-btn.btn Search
 	div.row-fluid.offset3
 		section#result-area
+			h4 Found Signatures
+			table.table.table-striped.table-bordered.table-hover#found-sig-table
+				thead
+					th No
+					th Signature
+				tbody
+					
 			
