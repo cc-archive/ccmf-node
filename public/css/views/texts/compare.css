@@ -6,3 +6,7 @@ section#a-compare > textarea,
 section#b-compare > textarea{
 	height:300px;
 }
+
+#result{
+	margin-bottom: 2%;
+}
