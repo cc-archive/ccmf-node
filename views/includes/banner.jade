@@ -1,0 +1,12 @@
+head
+	link(rel='stylesheet', href='/css/views/includes/banner.css')
+	script(src='/js/views/includes/banner.js')
+div#banner-top.navbar
+	div.navbar-inner
+		ul.nav.pull-right
+			li
+				a(href='/users/login') Login
+			li.divder-vertical
+		form('action'='/infos/searchs/','method'='get').navbar-search.pull-right
+			input(type='text',placeholder='Search').search-query
+	

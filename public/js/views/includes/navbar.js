@@ -1,19 +1,20 @@
 jQuery(document).ready(function(){
-	jQuery('#navbar-items a').each(function(index) {
+	
+	var currentLocArr = window.location.pathname.split("/");
+	
+	var currentLoc = currentLocArr[1];
+	
+	jQuery('.navbar-items a').each(function(index) {
 		
 		/* Get the controller name */
-		var pathArr = window.location.pathname.split("/");
+		var linkLocArr = this.href.split("/");
 		
-		var control = pathArr[1];
+		var linkLoc = linkLocArr[3];
 		
-		var currentLocArr = this.href.split("/");
-		
-		var currentControl = currentLocArr[3];
-		
-		if(currentControl == control){
-            jQuery(this).closest('li.dropdown').addClass("active");
+		if(linkLoc == currentLoc){
+            jQuery(this).closest('li.menu-item').addClass("active");
 		}else{
-			jQuery(this).closest('li').removeClass("active");
+			jQuery(this).closest('li.menu-item').removeClass("active");
 		}
 	});
 });
