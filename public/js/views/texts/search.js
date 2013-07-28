@@ -19,6 +19,7 @@ searchSigPage = function () {
 
 searchSigPage.prototype = {
 		
+		obj : this,
 		signatureSetsFound : null,
 		totalSignatureFound: 0,
 		
@@ -34,11 +35,22 @@ searchSigPage.prototype = {
 			/* Search through each band */
 			if(snapshot.val()!=null){ 
 				 /* If found in current band */
-				var foundSignatureSet = snapshot.val(); 
+				var foundSignatureSet = snapshot.val(),
+				keys = Object.keys(foundSignatureSet),
+				key = null;
+				
+				searchSigPage.totalSignatureFound++;
+				console.log('Found Signature! Total Signature Found: '+searchSigPage.totalSignatureFound); 
+				
+				for(key=0;key<keys.length;key++){
+					if(searchSigPage.signatureSetsFound.indexOf(foundSignatureSet[keys[key]])==-1){
+						searchSigPage.signatureSetsFound.push(foundSignatureSet[keys[key]]);
+						searchSigPage.prototype.popTable(searchSigPage.totalSignatureFound,foundSignatureSet[keys[key]]);
+					}
+				} 
 				
 			}
 		},
-		
 		
 		searchText:function(event){
 			
@@ -46,6 +58,7 @@ searchSigPage.prototype = {
 			
 			var textToBeSearch = jQuery('#search-area > textarea').val();
 			obj.clearResultTable();
+			console.log("Table Cleared");
 			
 			var textMod = ccmf.Text.create();
 			var dataMod = ccmf.Data.create();
@@ -57,8 +70,12 @@ searchSigPage.prototype = {
 			
 			var minHashSignature = textMod.minHashSignaturesGen(signature); 
 			
-			obj.totalSignatureFound = 0;
-			obj.signatureSetsFound = [];
-			var searchResults = dataMod.conductLsh(minHashSignature,obj.callback);
+			searchSigPage.totalSignatureFound = 0;
+			searchSigPage.signatureSetsFound = [];
+			dataMod.conductLsh(minHashSignature,obj.callback);
+		},
+
+		popTable: function(sigNo,signature){
+			jQuery('#result-area > table tbody').append("<tr><td>"+sigNo+"<td>" + signature.substr(0,90) + "...</td></tr>");
 		}
 };
