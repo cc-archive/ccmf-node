@@ -1,3 +1,7 @@
 [submodule "/public/js/lib/ccmf/"]
 	path = /public/js/lib/ccmf/
 	url = https://github.com/ethanlim/ccmf.git
+
+[submodule "node_modules/ccmf/ccmf"]
+	path = node_modules/ccmf/ccmf
+	url = https://github.com/ethanlim/ccmf.git
