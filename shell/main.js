@@ -35,11 +35,24 @@ function process(content){
 			signature[0] = registerShinglesFing; 
 			var minHashSignature = textMod.minHashSignaturesGen(signature);
 			
+			console.log('Begin Storing Signature for Article : '+ bodyIdx);
+			
 			/* Register the Signature into the Registry*/
 			dataMod.storeLsh(minHashSignature);
 		}
-		
 	}else{
 		console.log("No String Found");
 	}
 }
+
+var handleUncaughtException = function (err) {
+	  console.error('UNCLE:', err.stack || err);
+	};
+
+	exports.addExceptionHandler = function () {
+	  process.addListener('uncaughtException', handleUncaughtException);
+	};
+
+	exports.removeExceptionHandler = function () {
+	  process.removeListener('uncaughtException', handleUncaughtException);
+};
