@@ -1,14 +1,26 @@
 {
   "name": "ccmf-node",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.2",
   "scripts": {
-    "start": "node app.js"
+	  "start": "node app.js"
   },
   "dependencies": {
-    "express": "3.3.4",
-    "jade": "*",
-    "firebase":"*",
-    "tap":"*"
-  }
+	  "express": "3.3.4",
+	  "jade": "*",
+	  "firebase":"*"
+  },
+  "devDependencies":{
+	  "tap": "*"
+  },
+  "repository": {
+	    "type": "git",
+	    "url": "https://github.com/ethanlim/ccmf-node.git"
+  },
+  "author": "Ethan Lim <mail@ethanlim.net>",
+  "contributors": [ 
+	  {
+	     "name": "Ethan Lim",
+	     "email": "mail@ethanlim.net"
+	  }
+  ]
 }
