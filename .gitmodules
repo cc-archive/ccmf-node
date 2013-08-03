@@ -1,13 +1,3 @@
-[submodule "public/js/lib/ccmf"]
-	path = public/js/lib/ccmf
-	url = https://github.com/ethanlim/ccmf.git
-
-[submodule "node_modules/ccmf/ccmf"]
-	path = node_modules/ccmf/ccmf
-	url = https://github.com/ethanlim/ccmf.git
-[submodule "nodes_modules/ccmf/lib"]
-	path = nodes_modules/ccmf/lib
-	url = https://github.com/ethanlim/ccmf.git
-[submodule "node_modules/ccmf/lib"]
-	path = node_modules/ccmf/lib
+[submodule "node_modules/ccmf"]
+	path = node_modules/ccmf
 	url = https://github.com/ethanlim/ccmf.git
