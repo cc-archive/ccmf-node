@@ -24,7 +24,9 @@ app.configure(function(){
 	app.use(express.methodOverride());
 	app.use(app.router);											
 	app.use(express.static('public'));		
-	console.log("static folder "+ __dirname +"/public/ loaded");
+	console.log("Static Folder: "+ __dirname +"/public/ loaded");
+	app.use(express.static(__dirname));		
+	console.log("Static Folder: "+ __dirname +" loaded");
 });
 
 // development only
