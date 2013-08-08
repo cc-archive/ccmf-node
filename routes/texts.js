@@ -19,5 +19,9 @@ module.exports = function(app){
 	app.get('/texts/search',function(req,res){
 		res.render('texts/search',{title:'Search Texts'});
 	});
+	
+	app.get('/texts/performance',function(req,res){
+		res.render('texts/performance',{title:'Performance - Text Module'});
+	});
 
 };

@@ -1,0 +1,16 @@
+
+#navPerformances a{
+	color: #555;
+}
+
+#navPerformances li.active a{
+	color: white;
+	background-color:grey;
+}
+
+ .icon-chevron-right {
+	float: right;
+	margin-top: 2px;
+	margin-right: -6px;
+	opacity: .25;
+}

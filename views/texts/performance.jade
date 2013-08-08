@@ -1,0 +1,42 @@
+extends ../layout
+
+block head
+	link(rel='stylesheet', href='/css/views/texts/performance.css') 
+	script(src='/js/views/texts/performance.js')
+block header
+	div.row-fluid
+		div.span8.offset4#header
+			h1= title
+block content
+	section.row-fluid.span2.offset1#navPerformances
+		ul.nav.nav-tabs.nav-stacked
+			li.active
+				a(href='#shingles') Shingles
+					i.icon-chevron-right
+			li
+				a(href='#minhash') MinHash
+					i.icon-chevron-right
+			li
+				a(href='#lsh') Locality-Sensitive Hashing
+					i.icon-chevron-right
+			li 
+				a(href='#network') Network 
+					i.icon-chevron-right
+	sectioin.row-fluid.span8#stats
+		section(name='shingles')
+			header Shingles
+			article
+		section(name='minhash')
+			header Minhash
+			article
+		section(name='lsh')
+			header Locality-Sensitive Hashing
+			article
+		section(name='network')
+			header Network
+			article 
+				header Searches
+				p
+			article 
+				header Data Storage
+				p

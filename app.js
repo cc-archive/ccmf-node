@@ -31,7 +31,10 @@ app.configure(function(){
 
 // development only
 if ('development' == app.get('env')) {
-	app.use(express.errorHandler({dumpExceptions:true,showStack:true}));
+	app.use(express.errorHandler({
+									dumpExceptions:true,
+									showStack:true
+								}));
 }
 
 // production only
@@ -54,5 +57,5 @@ app.use(function(req, res, next){
 
 /* Create Server */
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on http://127.0.0.1:' + app.get('port'));
+  console.log('Express Server listening on http://127.0.0.1:' + app.get('port'));
 });
