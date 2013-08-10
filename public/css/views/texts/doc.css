@@ -2,3 +2,23 @@
 	position: relative;
 	left: 2%;
 }
+
+#textDocumentationNav a{
+	color: #555;
+}
+
+#textDocumentationNav li.active a{
+	color: white;
+	background-color:grey;
+}
+
+ .icon-chevron-right {
+	float: right;
+	margin-top: 2px;
+	margin-right: -6px;
+	opacity: .25;
+}
+
+#textDocumentationContent img{
+	margin:5px;
+}
