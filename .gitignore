@@ -17,3 +17,4 @@ npm-debug.log
 .settings
 Thumbs.db
 node_modules/
+public/img
