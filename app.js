@@ -3,6 +3,7 @@
  */
 
 var express = require('express')
+  , expressValidator = require('express-validator')
   , routes = require('./routes')
   , http = require('http')
   , path = require('path');
@@ -18,6 +19,8 @@ app.configure(function(){
 	app.set('views', __dirname + '/views');
 	app.set('layout',__dirname + '/views/templates/layout');
 	app.set('view engine', 'jade');
+	app.set('firebase ref','https://ccmf.firebaseio.com/');
+	app.use(expressValidator());
 	app.use(express.favicon());
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());
@@ -54,6 +57,12 @@ require('./routes/infos')(app);
 app.use(function(req, res, next){
 	res.send(404, 'Resource does not exist.');
 });
+
+function loggedIn(req, res, next) {
+    req.session.user!=null
+        ? next()
+        : res.redirect("/login?url="+req.url);
+}
 
 /* Create Server */
 http.createServer(app).listen(app.get('port'), function(){
