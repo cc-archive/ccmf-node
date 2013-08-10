@@ -4,3 +4,21 @@ block header
 	div.row-fluid
 		div.span3.offset5
 			h1= 'Log In'
+block content
+	div.row-fluid
+		legend.span6.offset3 Login
+		form.form-horizontal.span3.offset3(method='post',action='/users/login')
+			div.control-group
+				label.control-label(for='inputEmail') Email
+				div.controls
+					if(typeof user !== 'undefined')
+						input(type='text',id='inputEmail',placeholder='Email',name='user[email]',value=user.email)
+					else
+						input(type='text',id='inputEmail',placeholder='Email',name='user[email]')
+			div.control-group
+				label.control-label(for='inputPW') Password
+				div.controls
+					input(type='password',id='inputPW',placeholder='Password',name='user[pw]')
+			div.control-group
+				div.controls
+					button.btn(type='submit') Log In
