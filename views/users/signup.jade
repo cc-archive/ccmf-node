@@ -1,0 +1,51 @@
+extends ../layout
+
+block header
+	div.row-fluid
+		div.span3.offset5
+			h1= title
+block content
+	div.row-fluid
+		legend.span6.offset3 Sign Up
+		form.form-horizontal.span3.offset3(method='post',action='/users/signup')
+			div.control-group
+				label.control-label(for='inputFirstName') First Name
+				div.controls
+					if(typeof user !=="undefined")
+						input(type='text',id='inputFirstName',placeholder='First Name',name='user[first]',value=user.first)
+					else
+						input(type='text',id='inputFirstName',placeholder='First Name',name='user[first]')
+			div.control-group
+				label.control-label(for='inputLastName') Last Name
+				div.controls
+					if(typeof user !== 'undefined')
+						input(type='text',id='inputLastName',placeholder='Last Name',name='user[last]',value=user.last)
+					else
+						input(type='text',id='inputLastName',placeholder='Last Name',name='user[last]')
+			div.control-group
+				label.control-label(for='inputEmail') Email
+				div.controls
+					if(typeof user !== 'undefined')
+						input(type='text',id='inputEmail',placeholder='Email',name='user[email]',value=user.email)
+					else
+						input(type='text',id='inputEmail',placeholder='Email',name='user[email]')
+			div.control-group
+				label.control-label(for='inputPW') Password
+				div.controls
+					input(type='password',id='inputPW',placeholder='Password',name='user[pw]')
+			div.control-group
+				label.control-label(for='inputPWAgain') Re-enter Password
+				div.controls
+					input(type='password',id='inputPWAgain',placeholder='Re-enter Password',name='user[repw]')
+			div.control-group
+				div.controls
+					button.btn(type='submit') Sign Up
+		div.span2
+			div.row
+				img(src='http://ccmf.s3.amazonaws.com/img/register/register.jpg').img-rounded
+			div.row
+				article
+					small 
+						| By clicking Sign Up, you agree to our Terms and that you have read our
+						| <a href='/users/policy/data'>Data Use Policy</a>
+						| including our <a href='/users/policy/cookie'>Cookie Use</a>.
