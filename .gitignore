@@ -16,4 +16,4 @@ npm-debug.log
 .DS_Store
 .settings
 Thumbs.db
-nodes_modules/bin
+node_modules/
