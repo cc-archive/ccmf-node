@@ -7,3 +7,67 @@ block header
 	div.row-fluid
 		div.span8.offset4#header
 			h1= title
+block content
+	section.row-fluid.span2.offset1#textDocumentationNav
+		ul.nav.nav-tabs.nav-stacked
+			li.active
+				a(href='#general') General
+					i.icon-chevron-right
+			li
+				a(href='#shingles') Shingles
+					i.icon-chevron-right
+			li
+				a(href='#minhash') MinHash
+					i.icon-chevron-right
+			li 
+				a(href='#lsh') Locality-Sensitive Hashing
+					i.icon-chevron-right
+			li
+				a(href='#storeAndGet') Storage and Retrieval
+					i.icon-chevron-right
+	section.row-fluid.span6#textDocumentationContent
+		section(name='general')
+			header General
+			section(name='general-overview')
+				article
+					P
+						| Creative Commons Media-Fingerprint (CCMF) library allows you to upload your textual content and it would scan
+						| the web for similar contents. It would highlight these similar content and flag them to the uploader shown in the Search
+						| function in Fig 1.
+					img(src='http://ccmf.s3.amazonaws.com/img/views/texts/doc/general-aim1.png').img-polaroid
+					div.row-fluid
+						span.span2.offset6 Fig 1
+					p
+						| The inner workings behind CCMF is based on <a href='http://infolab.stanford.edu/~ullman/mmds.html'>Finding Similar Items </a>
+						| authored by Anand Rajaraman and Jeff Ullman. Here we would summerise into three steps, shingles extraction, minhash and 
+						| locality-sensitive hashing. CCMF's implementation is modified for the distributed nature of search and storing, although the 
+						| methodology remains loyal to Rajaraman/Jeff.
+					img(src='http://ccmf.s3.amazonaws.com/img/views/texts/doc/general-working1.png').img-polaroid
+					div.row-fluid
+						span.span2.offset6 Fig 2
+					p
+						| Firstly, the text content is submitted through a shingles extractor, which breaks the text into k length word tokens. There are 
+						| different schemes within the library to determine the length and extraction method of each shingles. Afterwards, the set of shingles
+						| would be send through a minhash signature generator, which compress the text size to it's signature size. The reason for minhash is to
+						| reduce the size for comparison while preserving the intrinsic relationship between each documents. Now we are ready to determine the
+						| similarity between any two documents that go through this process. However, usually we are more concern on finding the similar items
+						| based on a given article. Thus, locality-sensitive hashing is used to break the signatures into many parts. The grand idea is that
+						| given an unknown text, we can break it up as well and compare each parts with the upload text. If any of the parts concided, then we 
+						| conclude that they are similar enough to be candidate pairs.
+		section(name='shingles')
+			header Shingles
+			article
+		section(name='minhash')
+			header MinHash
+			article
+		section(name='lsh')
+			header Locality-Sensitive Hashing
+			article
+		section(name='storeAndGet')
+			header Storage and Retrieval
+			article 
+				header Store
+				p
+			article 
+				header Retrieve
+				p
