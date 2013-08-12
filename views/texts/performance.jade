@@ -3,6 +3,8 @@ extends ../layout
 block head
 	link(rel='stylesheet', href='/css/views/texts/performance.css') 
 	script(src='/js/views/texts/performance.js')
+	script(src='/js/lib/rgraph/RGraph.common.core.js')
+	script(src='/js/lib/rgraph/RGraph.hbar.js')
 block header
 	div.row-fluid
 		div.span8.offset4#header
@@ -11,6 +13,9 @@ block content
 	section.row-fluid.span2.offset1#navPerformances
 		ul.nav.nav-tabs.nav-stacked
 			li.active
+				a(href='#general') General
+					i.icon-chevron-right
+			li
 				a(href='#shingles') Shingles
 					i.icon-chevron-right
 			li
@@ -22,15 +27,28 @@ block content
 			li 
 				a(href='#network') Network 
 					i.icon-chevron-right
-	section.row-fluid.span8#stats
+	section.row-fluid.span6#stats
+		section(name='general')
+			header General
+			article
+				p 
+					| Performance data of the Creative Common's Media-Fingerprint (CCMF) library 
+					| is obtained from executing the various modules through a standard dataset. 
+					| The standard dataset used is from 21578 news documents from <a href='http://www.daviddlewis.com/resources/testcollections/reuters21578/'>
+					| Reuters</a>. The benchmark is not based on all the articles but a sizable subset as 
+					| indicated on each section. Each section would display the difference in performance
+					| when modules are used with different parameters.
 		section(name='shingles')
 			header Shingles
+			canvas#csvShinglesPerformance(height='300px',width='800px')
 			article
 		section(name='minhash')
 			header Minhash
+			canvas#csvMinhashPerformance(height='300px',width='800px')
 			article
 		section(name='lsh')
 			header Locality-Sensitive Hashing
+			canvas#csvLshPerformance(height='300px',width='800px')
 			article
 		section(name='network')
 			header Network
