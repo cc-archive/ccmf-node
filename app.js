@@ -32,7 +32,6 @@ app.configure(function(){
 	app.use(function(req, res, next){
 		//Initialise the local variable user for each view
 	    res.locals.user = req.session.user;
-	    console.log(res.locals.user);
 	    next();
 	});
 	app.use(express.methodOverride());
