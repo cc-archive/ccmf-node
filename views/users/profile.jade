@@ -1,0 +1,26 @@
+extends ../layout
+
+block head
+	link(rel='stylesheet', href='/css/views/users/profile.css')
+	script(src='/js/views/users/profile.js')
+block header
+	div.row-fluid
+		div.span8.offset5
+			h1= title
+block content
+	ul.nav.nav-tabs.span6.offset3
+		li.active
+			a(href='#personal',data-toggle='tab') Personal 
+		li
+			a(href='#registered',data-toggle='tab') Registered
+	div.tab-content.span5.offset3
+		div#personal.tab-pane.active
+		div#registered.tab-pane
+			table#signaturesTbl.table.table-bordered.table-hover
+				thead
+					th Index.
+					th Signatures
+				tbody
+					each val, index in signatures
+						td=index
+						td=val
