@@ -107,4 +107,23 @@ module.exports = function(app){
 			user	:req.body.user
 		});
 	});
+	
+	/* Profile */
+	app.get('/users/profile',function(req,res){
+		
+		var rootRef = new Firebase(app.get('firebase ref'));
+		var usersRef = rootRef.child('users');
+		var escapedEmail = escapeEmailAddress(res.locals.user.email);
+		var author = usersRef.child(escapedEmail);
+		
+		author.once('value',function(snapshot){
+			
+			foundUser = snapshot.val();
+			
+			var userSignatureSet = foundUser.works;
+			
+			res.render('users/profile',{title:"Profile",signatures:userSignatureSet});
+		});
+		
+	});
 };
