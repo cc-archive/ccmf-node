@@ -94,12 +94,14 @@ module.exports = function(app){
 		var usersRef = rootRef.child('users');
 		var newUser = usersRef.child(escapeEmailAddress(email));
 		
+		/* Data Structure for User*/
 		newUser.set({
 			name:{
 				first:firstName,
 				last:lastName
 			},
-			password:pw
+			password:pw,
+			work:null,
 		});
 		
 		render({

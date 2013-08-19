@@ -44,8 +44,12 @@ searchSigPage.prototype = {
 				
 				for(key=0;key<keys.length;key++){
 					if(searchSigPage.signatureSetsFound.indexOf(foundSignatureSet[keys[key]])==-1){
+
 						searchSigPage.signatureSetsFound.push(foundSignatureSet[keys[key]]);
-						searchSigPage.prototype.popTable(searchSigPage.totalSignatureFound,foundSignatureSet[keys[key]]);
+						
+						signatureInfo = JSON.parse(foundSignatureSet[keys[key]]);
+						
+						searchSigPage.prototype.popTable(searchSigPage.totalSignatureFound,signatureInfo);
 					}
 				} 
 				
@@ -75,7 +79,9 @@ searchSigPage.prototype = {
 			dataMod.conductLsh(minHashSignature,obj.callback);
 		},
 
-		popTable: function(sigNo,signature){
-			jQuery('#result-area > table tbody').append("<tr><td>"+sigNo+"<td>" + signature.substr(0,90) + "...</td></tr>");
+		popTable: function(sigNo,signatureInfo){
+			jQuery('#result-area > table tbody').append("<tr><td>"+sigNo+"<td>" + signatureInfo['sig'][0] + "...</td>" +
+					"<td>"+signatureInfo['metadata']['author']['first']+' '+signatureInfo['metadata']['author']['last']+
+					"<td>"+signatureInfo['metadata']['author']['email']+"</td>"+"</tr>");
 		}
 };

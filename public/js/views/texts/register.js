@@ -21,6 +21,7 @@ registerPage = function () {
 registerPage.prototype = {
 				
 		init: function(){
+			console.log(local_data);
 		},
 		
 		registerText:function(event){
@@ -36,9 +37,17 @@ registerPage.prototype = {
 			var signature = [];
 			signature[0] = registerShinglesFing; 
 			var minHashSignature = textMod.minHashSignaturesGen(signature);
-			
+						
 			/* Register the Signature into the Registry*/
-			dataMod.storeLsh(minHashSignature);
+			
+			dataMod.storeLsh(minHashSignature,null,{
+														author:
+														{
+															first:local_data.first,
+															last:local_data.last,
+															email:local_data.email
+														}
+												   });
 			
 			jQuery('#result > span').text('Text Registered');
 		}
