@@ -7,7 +7,7 @@
  */
 var Firebase = require('firebase');
 
-var title = "Sign Up"
+ 
 
 function escapeEmailAddress(email) {
 	  if (!email) return false
@@ -25,11 +25,12 @@ module.exports = function(app){
 	/* Login 	*/
 	
 	app.get('/users/login',function(req,res){
-		res.render('users/login',{title:title});
+		//Render the Login Page
+		res.render('users/login',{title:"Login"});
 	});
 	
 	app.post('/users/login',function(req,res){
-		
+		/* Form Submitted from Login Page*/
 		var email = req.body.user.email,
 		pw = req.body.user.pw;
 		
@@ -42,20 +43,22 @@ module.exports = function(app){
 		userEmailRef.once('value',function(snapshot){
 			user = snapshot.val();
 			
-			if(user.password==pw){
-				 res.cookie('ccmf.auth',email);
+			if(email && user.password==pw){
+				
+				 req.session.user = new Object;
+				 req.session.user['email'] = email;
+				 req.session.user['first'] = user.name.first;
+				 req.session.user['last'] = user.name.last;
 				 
 				 res.redirect('/');
 			}else{
-				 res.render('./users/login',{title:title,user:req.body.user});
+				 res.render('./users/login',{title:"Login",user:req.body.user});
 			}
 		});
 	});
 	
-	/* Logout */
-	
 	app.post('/users/logout',function(req,res){
-		delete req.session.user_id;
+		delete req.session.user;
 		res.redirect('/');
 	});
 	
@@ -63,7 +66,7 @@ module.exports = function(app){
 	
 	app.get('/users/signup',function(req,res){
 		res.render('users/signup',{
-									title:title 
+									title:"Sign Up"
 								  }
 		);
 	});
@@ -73,7 +76,7 @@ module.exports = function(app){
 		var render = function(htmlVar) {
 		    res.render('./users/signup', 
 		    		{
-		    			title	:title,
+		    			title	:"Sign Up",
 						flash	:htmlVar.flash,
 					    user	:htmlVar.user
 		    		}		

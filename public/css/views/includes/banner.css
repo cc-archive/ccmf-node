@@ -1,3 +1,7 @@
 #banner-top{
 	background: #ABB3AC;
 }
+
+a#welcomeStatement{
+	text-transform:capitalize;
+}

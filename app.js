@@ -24,6 +24,17 @@ app.configure(function(){
 	app.use(express.favicon());
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());
+	app.use(express.cookieParser('ccmf'));
+	app.use(express.session({
+				secret:'ccmf',
+				maxAge:3600000
+	}));
+	app.use(function(req, res, next){
+		//Initialise the local variable user for each view
+	    res.locals.user = req.session.user;
+	    console.log(res.locals.user);
+	    next();
+	});
 	app.use(express.methodOverride());
 	app.use(app.router);											
 	app.use(express.static('public'));		

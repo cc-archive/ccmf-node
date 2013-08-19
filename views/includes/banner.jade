@@ -4,9 +4,16 @@ head
 div#banner-top.navbar
 	div.navbar-inner
 		ul.nav.pull-right
+			if typeof(locals.user) !== "undefined"
+				a#welcomeStatement.brand(href='/users/profile/') welcome, #{locals.user.first} #{locals.user.last}
 			li
-				a(href='/users/login') Login
+				if typeof(locals.user) === "undefined" 
+					form.navbar-form(method="get",action='/users/login')
+						button.btn(type='submit') Login
+				else
+					form.navbar-form(method="post",action='/users/logout')
+						button.btn(type='submit') Logout
 			li.divder-vertical
-		form('action'='/infos/searchs/','method'='get').navbar-search.pull-right
+		form('action'='/infos/searchs/','method'='get').navbar-search.pull-left
 			input(type='text',placeholder='Search').search-query
 	

@@ -16,6 +16,9 @@ block content
 				a(href='#general') General
 					i.icon-chevron-right
 			li
+				a(href='#testEnv') Test Environment
+					i.icon-chevron-right
+			li
 				a(href='#shingles') Shingles
 					i.icon-chevron-right
 			li
@@ -38,6 +41,23 @@ block content
 					| Reuters</a>. The benchmark is not based on all the articles but a sizable subset as 
 					| indicated on each section. Each section would display the difference in performance
 					| when modules are used with different parameters.
+		section(name='testEnv')
+			header Test Environment
+			article
+				p
+					| The test environment is based on the <a href='http://aws.amazon.com/'>Amazon Web Services (AWS)</a> 
+					| 64-bits <a href='http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts_micro_instances.html'>micro-instance</a>. 
+				table.table.table-bordered
+					thead
+						th Item
+						th Description
+					tbody
+						tr	
+							td Processor
+							td 2 x 1.0-1.2 GHz Xeon 
+						tr
+							td Memory
+							td 615 Mb
 		section(name='shingles')
 			header Shingles
 			canvas#csvShinglesPerformance(height='300px',width='800px')
