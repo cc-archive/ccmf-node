@@ -7,10 +7,8 @@
  */
 var Firebase = require('firebase');
 
- 
-
 function escapeEmailAddress(email) {
-	  if (!email) return false
+	  if (!email) return false;
 	  
 	  var replaceDotWith = '::';
 	  

@@ -37,7 +37,7 @@ registerPage.prototype = {
 			var signature = [];
 			signature[0] = registerShinglesFing; 
 			var minHashSignature = textMod.minHashSignaturesGen(signature);
-						
+			
 			/* Register the Signature into the Registry*/
 			
 			dataMod.storeLsh(minHashSignature,null,{
@@ -47,7 +47,8 @@ registerPage.prototype = {
 															last:local_data.last,
 															email:local_data.email
 														}
-												   });
+												   }
+			);
 			
 			jQuery('#result > span').text('Text Registered');
 		}
