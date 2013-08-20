@@ -5,7 +5,8 @@
 /**
  *  Insert require module
  */
-var Firebase = require('firebase');
+var Firebase = require('firebase'),
+	Crypto = require('crypto');
 
 function escapeEmailAddress(email) {
 	  if (!email) return false;
@@ -28,6 +29,9 @@ module.exports = function(app){
 	});
 	
 	app.post('/users/login',function(req,res){
+		
+		var md5sum = Crypto.createHash('md5');
+		
 		/* Form Submitted from Login Page*/
 		var email = req.body.user.email,
 		pw = req.body.user.pw;
@@ -41,7 +45,7 @@ module.exports = function(app){
 		userEmailRef.once('value',function(snapshot){
 			user = snapshot.val();
 			
-			if(email && user.password==pw){
+			if(email && user.password==md5sum.update(pw).digest('hex')){
 				
 				 req.session.user = new Object;
 				 req.session.user['email'] = email;
@@ -81,12 +85,14 @@ module.exports = function(app){
 		    );
 		};
 		
+		var md5sum = Crypto.createHash('md5');
+		
 		/* Obtain the form data */ 
 		var firstName = req.body.user.first,
 		lastName = req.body.user.last,
 		email = req.body.user.email,
-		pw = req.body.user.pw;
-		
+		pw = md5sum.update(req.body.user.pw).digest('hex');
+
 		/* Save into Firebase */
 		var rootRef = new Firebase(app.get('firebase ref'));
 		var usersRef = rootRef.child('users');
