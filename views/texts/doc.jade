@@ -9,7 +9,7 @@ block header
 			h1= title
 block content
 	section.row-fluid.span2.offset1#textDocumentationNav
-		ul.nav.nav-tabs.nav-stacked
+		ul.nav.nav-tabs.nav-stacked.navbar-static-top
 			li.active
 				a(href='#general') General
 					i.icon-chevron-right
@@ -20,14 +20,14 @@ block content
 				a(href='#minhash') MinHash
 					i.icon-chevron-right
 			li 
-				a(href='#lsh') Locality-Sensitive Hashing
+				a(href='#search') Search
 					i.icon-chevron-right
 			li
-				a(href='#storeAndGet') Storage and Retrieval
+				a(href='#register') Register
 					i.icon-chevron-right
 	section.row-fluid.span6#textDocumentationContent
-		section(name='general')
-			header General
+		section
+			a(name='general').DocumentHeader General
 			section(name='general-overview')
 				header Overview
 				article
@@ -55,56 +55,119 @@ block content
 						| based on a given article. Thus, locality-sensitive hashing is used to break the signatures into many parts. The grand idea is that
 						| given an unknown text, we can break it up as well and compare each parts with the upload text. If any of the parts coincided, then we 
 						| conclude that they are similar enough to be candidate pairs.
-			section(name='general-beginusage')
-				header Begin
+			section(name='general-usage')
+				header Usage
 				article
 					P 
 						| To begin, please <a href='/infos/installation'>install</a> ccmf library. The installation can be on the node.js or on the client browser.
 						| Next, create a ccmf library object. 
 						| <code> var textMod = ccmf.Text.create(); </code>
-		section(name='shingles')
-			header Shingles
+		section
+			a(name='shingles').DocumentHeader Shingles
 			section(name='shingles-overview')
 				header Overview
 				article
 					P
 						| Shingles means substring of length k. The first step is to conducting shingles extraction, or substring extraction from the target textual content.
-						| You can indicate the number of characters to extract via function parameters.
-						| Eg. Here we are extracting shingles of length 9 from the text.
-						| <code> var textAShingles = textMod.removedStopWordShingles(rawTextA,9); </code>
+						| You can indicate the number of characters to extract via function parameters. After extraction, compression is required to reduce the data size
+						| for further processing. Hence, we would reduce each shingles to a 32 bit integer.
+			section(name='shingles-usage')
+				header Usage
+				article
+					P
+						| Here we are extracting shingles of length 9 from the text.<br/>
+						| <code> var textAShingles = textMod.removedStopWordShingles(rawTextA,9); </code><br/>
+						| Next, each shingles with the textAShingles array would be compress into 32 bits integer.<br/>
+						| <code> var shinglesFingerprintText = textMod.shinglesFingerprintConv(textAShingles); </code>
 			section(name='shingles-modes')
 				header Modes
 				article
 					P
 						| There are three different modes for shingles extraction. There are different based on whether to consider stop words, common words in the English
-						| vocabulary, and the method of extractions.
-					ul
+						| vocabulary, and the method of extractions. Different mode of extraction would affect the speed of extraction and performance of the end result.
+					ul#typesOfShinglesModes
 						li 
 							header Fixed Shingles
 							article 
-								p
-									| The most basic shingles extraction. Simply extract each shingles of substring length k from the beginning to the end of text.
+								P
+									| The most basic shingles extraction. Simply extract each shingles of substring length k from the beginning to the end of text.<br/>
+									| <code>  var textAShingles = textMod.fixedShinglesWithoutWS(rawText,9); </code>
 						li 
 							header Remove Stop Words Shingles
 							article 
 								P
-									| Perform a removal of all stop words before conducting Fixed Shingles extraction. 
+									| Perform a removal of all stop words before conducting Fixed Shingles extraction.<br/> 
+									| <code>  var textAShingles = textMod.removedStopWordShingles(rawText,9); </code>
 						li 
 							header Stop More After Stop Word Shingles
 							article
 								P
-									| This is a different methodology of extractions. Each shingles are two words after the encountering of a stop word.
-		section(name='minhash')
-			header MinHash
-			article
-		section(name='lsh')
-			header Locality-Sensitive Hashing
-			article
-		section(name='storeAndGet')
-			header Storage and Retrieval
-			article 
-				header Store
-				p
-			article 
-				header Retrieve
-				p
+									| This is a different methodology of extractions. Each shingles are two words after the encountering of a stop word.<br/>
+									| <code>  var textAShingles = textMod.stopMoreShingles(rawText,9); </code>
+		section
+			a(name='minhash').DocumentHeader MinHash
+			section(name='minhash-overview')
+				header Overview
+				article
+					P
+						| Minhash is a technique or process of compressing the amount of data actually needed for comparison while preserving their inherit
+						| relationship with each other. There are more information on <a href='http://en.wikipedia.org/wiki/MinHash'>Wikipedia</a> or for
+						| a more detailed explanation, read <a href='http://infolab.stanford.edu/~ullman/mmds/ch3.pdf'>Finding Similar Items</a>.
+			section(name='minhash-usage')
+				header Usage
+				article
+					P 
+						| <code> var signatures[0] = shinglesFingerprintText; </code><br/>
+						| The previous compressed integer array could be loaded into an array of signatures. 
+						| Use this array of signature if you would like to perform similar text matching solely on the browser.
+						| You can add N signatures to this signature array.<br/>
+						| <code> var signatures[1] = shinglesFingerprintText; </code><br/>
+						| <code> var signatures[2] = shinglesFingerprintText; </code><br/>
+						| <code> var signatures[3] = shinglesFingerprintText; </code><br/>
+						| Now it would be ready to generate a N minhash signature, given N fingerprint signatures.<br/>
+						| <code> var minHashSignature = textMod.minHashSignaturesGen(signatures); </code>
+		section
+			a(name='search').DocumentHeader Search
+			section(name='search-overview')
+				header Overview
+				article
+					P
+						| To compare each and every pair of minhash signatures to determine the most similar pair would be too inefficient. 
+						| Normally for this use case, we only need to focus on pairs of signatures that are most likely to be similar and
+						| not on every pair. The search functions uses the underlying locality-sensitive hashing (LSH).
+						| The art of locality-sensitive hashing is that through multiple hashing of a minhash signature,
+						| eventually the similar text content would be hashed to the same location.
+			section(name='search-usage')
+				header Usage
+				article
+					P
+						| The LSH belongs to the data module and so we have to first create the data module object. <br/>
+						| <code> var dataMod = ccmf.Data.create(); </code><br/>
+						| Next, create the callback to process the return data.
+						| <code><br/>
+						| callback :function(snapshot){						<br/>
+						| &nbsp;&nbsp;&nbsp;/* Search through each band */					<br/>
+						| &nbsp;&nbsp;&nbsp;if(snapshot.val()!=null){						<br/>
+						| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var foundSignatureSet = snapshot.val();		<br/>
+						| &nbsp;&nbsp;}												<br/>
+						| }													
+						| </code>											<br/>
+						| Call the method in data module to conduct LSH. 
+						| <code> dataMod.conductLsh(minHashSignature,obj.callback); </code>
+						| The callback function would be called and the similar minhash signatures would be returned.
+		section
+			a(name='register').DocumentHeader Register
+			section(name='register-overview')
+				header Overview
+				article
+					P
+						| To be able automatically scan by others for similar text content, one has to register their textual content first.
+						| We can load a single minhash signatures into the database. Once successfully stored, a subsequent <a href='#search'>search</a> would
+						| detect this similarity. 
+			section(name='register-usage')
+				header Usage
+				article
+					code 
+						| dataMod.storeLsh(minHashSignature,null,null);
+					P
+						| The minhashSignature would be split into bands by LSH and individually stored.
