@@ -29,6 +29,7 @@ block content
 		section(name='general')
 			header General
 			section(name='general-overview')
+				header Overview
 				article
 					P
 						| Creative Commons Media-Fingerprint (CCMF) library allows you to upload your textual content and it would scan
@@ -52,11 +53,47 @@ block content
 						| reduce the size for comparison while preserving the intrinsic relationship between each documents. Now we are ready to determine the
 						| similarity between any two documents that go through this process. However, usually we are more concern on finding the similar items
 						| based on a given article. Thus, locality-sensitive hashing is used to break the signatures into many parts. The grand idea is that
-						| given an unknown text, we can break it up as well and compare each parts with the upload text. If any of the parts concided, then we 
+						| given an unknown text, we can break it up as well and compare each parts with the upload text. If any of the parts coincided, then we 
 						| conclude that they are similar enough to be candidate pairs.
+			section(name='general-beginusage')
+				header Begin
+				article
+					P 
+						| To begin, please <a href='/infos/installation'>install</a> ccmf library. The installation can be on the node.js or on the client browser.
+						| Next, create a ccmf library object. 
+						| <code> var textMod = ccmf.Text.create(); </code>
 		section(name='shingles')
 			header Shingles
-			article
+			section(name='shingles-overview')
+				header Overview
+				article
+					P
+						| Shingles means substring of length k. The first step is to conducting shingles extraction, or substring extraction from the target textual content.
+						| You can indicate the number of characters to extract via function parameters.
+						| Eg. Here we are extracting shingles of length 9 from the text.
+						| <code> var textAShingles = textMod.removedStopWordShingles(rawTextA,9); </code>
+			section(name='shingles-modes')
+				header Modes
+				article
+					P
+						| There are three different modes for shingles extraction. There are different based on whether to consider stop words, common words in the English
+						| vocabulary, and the method of extractions.
+					ul
+						li 
+							header Fixed Shingles
+							article 
+								p
+									| The most basic shingles extraction. Simply extract each shingles of substring length k from the beginning to the end of text.
+						li 
+							header Remove Stop Words Shingles
+							article 
+								P
+									| Perform a removal of all stop words before conducting Fixed Shingles extraction. 
+						li 
+							header Stop More After Stop Word Shingles
+							article
+								P
+									| This is a different methodology of extractions. Each shingles are two words after the encountering of a stop word.
 		section(name='minhash')
 			header MinHash
 			article
