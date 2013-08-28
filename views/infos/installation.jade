@@ -1,0 +1,15 @@
+extends ../layout
+
+block header
+	div.row-fluid
+		div.span8.offset5
+			h1= title
+block content
+	ul.nav.nav-tabs.span6.offset3
+		li.active
+			a(href='#node',data-toggle='tab') Node.JS
+		li
+			a(href='#browser',data-toggle='tab') Browser
+	div.tab-content.span5.offset3
+		div#node.tab-pane.active
+		div#browser.tab-pane
