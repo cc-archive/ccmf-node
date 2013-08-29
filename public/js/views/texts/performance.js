@@ -28,7 +28,7 @@ jQuery(document).ready(function(e){
      .Set('chart.gutter.right',50)
      .Draw();
 	 
-	 var lshPerfData= [461.44],
+	 var lshPerfData= [461.44,494.77],
 	 hbar = new RGraph.HBar('csvLshPerformance',lshPerfData)
 	 .Set('chart.units.post','ms')
 	 .Set('chart.scale.decimals',2)
@@ -38,7 +38,7 @@ jQuery(document).ready(function(e){
      .Set('chart.labels.above', true)
      .Set('chart.vmargin', 15)
      .Set('chart.background.grid', false)
-     .Set('chart.labels', ['b=20 n=100'])
+     .Set('chart.labels', ['b=20 n=100','b=10 n=100'])
      .Set('chart.gutter.right',50)
      .Draw();
 });
