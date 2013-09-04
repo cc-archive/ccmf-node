@@ -28,7 +28,10 @@ block content
 				a(href='#lsh') Locality-Sensitive Hashing
 					i.icon-chevron-right
 			li 
-				a(href='#network') Network 
+				a(href='#searches') Searches
+					i.icon-chevron-right
+			li 
+				a(href='#storage') Register
 					i.icon-chevron-right
 	section.row-fluid.span6#stats
 		section
@@ -71,10 +74,8 @@ block content
 			canvas#csvLshPerformance(height='300px',width='800px')
 			article
 		section
-			a(name='network').DocumentHeader Network
+			a(name='searches').DocumentHeader Searches
 			article 
-				header Searches
-				p
-			article 
-				header Data Storage
-				p
+		section
+			a(name='register').DocumentHeader Register
+			article
