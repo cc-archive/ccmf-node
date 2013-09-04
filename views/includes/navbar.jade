@@ -15,13 +15,14 @@ div.navbar#navbar-mid
 							a(href='/texts/doc') Documentation
 						li
 							a(href='/infos/installation') Installation
-						li.divider
-						li
-							a(href='/texts/register') Register
-						li
-							a(href='/texts/search')	Search
-						li
-							a(href='/texts/compare') Compare
+						if typeof(locals.user) !== "undefined" 
+							li.divider
+							li
+								a(href='/texts/register') Register
+							li
+								a(href='/texts/search')	Search
+							li
+								a(href='/texts/compare') Compare
 						li.divider
 						li
 							a(href='/texts/performance') Performance
