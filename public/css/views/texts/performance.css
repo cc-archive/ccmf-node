@@ -3,6 +3,16 @@
 	color: #555;
 }
 
+.DocumentHeader,
+.DocumentHeader:active,
+.DocumentHeader:hover{
+	color: #333333;
+	text-decoration:none;
+	font-size: 25px;
+	display:block;
+	margin-bottom:2%;
+}
+
 #navPerformances li.active a{
 	color: white;
 	background-color:grey;

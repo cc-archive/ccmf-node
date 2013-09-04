@@ -31,8 +31,8 @@ block content
 				a(href='#network') Network 
 					i.icon-chevron-right
 	section.row-fluid.span6#stats
-		section(name='general')
-			header General
+		section
+			a(name='general').DocumentHeader General
 			article
 				p 
 					| Performance data of the Creative Common's Media-Fingerprint (CCMF) library 
@@ -41,8 +41,8 @@ block content
 					| Reuters</a>. The benchmark is not based on all the articles but a sizable subset as 
 					| indicated on each section. Each section would display the difference in performance
 					| when modules are used with different parameters.
-		section(name='testEnv')
-			header Test Environment
+		section
+			a(name='testEnv').DocumentHeader Test Environment
 			article
 				p
 					| The test environment is based on the <a href='http://aws.amazon.com/'>Amazon Web Services (AWS)</a> 
@@ -58,20 +58,20 @@ block content
 						tr
 							td Memory
 							td 615 Mb
-		section(name='shingles')
-			header Shingles
+		section
+			a(name='shingles').DocumentHeader Shingles
 			canvas#csvShinglesPerformance(height='300px',width='800px')
 			article
-		section(name='minhash')
-			header Minhash
+		section
+			a(name='minhash').DocumentHeader Minhash
 			canvas#csvMinhashPerformance(height='300px',width='800px')
 			article
-		section(name='lsh')
-			header Locality-Sensitive Hashing
+		section
+			a(name='lsh').DocumentHeader Locality-Sensitive Hashing
 			canvas#csvLshPerformance(height='300px',width='800px')
 			article
-		section(name='network')
-			header Network
+		section
+			a(name='network').DocumentHeader Network
 			article 
 				header Searches
 				p
