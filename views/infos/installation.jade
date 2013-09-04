@@ -11,5 +11,41 @@ block content
 		li
 			a(href='#browser',data-toggle='tab') Browser
 	div.tab-content.span5.offset3
-		div#node.tab-pane.active
+		div#node.tab-pane.active(style="overflow-x:hidden")
+				p
+					| To install ccmf, modify your package.json:
+				pre
+					|  "dependencies": {
+					|  		"express": "3.3.4",
+					|		"express-validator": "*",
+					|		"jade": "*",
+					|		"firebase":"*",
+					|		"ccmf":"*",
+					|		"browserify":"*",
+					|		"passport":"*"
+					|	}
+				P	
+					| To use ccmf on the client in a Node.JS environment, include as follows:
+				ul(class="breadcrumb")
+					li
+						a root
+						span(class="divider") /
+					li
+						a node_modules 
+						span(class="divider") /
+					li	
+						a ccmf 
+						span(class="divider") /
+					li
+						a lib
+						span(class="divider") /
+					li
+						a build
+						span(class="divider") /
+					li
+						a ccmf.js
 		div#browser.tab-pane
+				P
+					| To use ccmf solely from the client browser, download the library 
+					a(href='https://raw.github.com/ethanlim/ccmf/master/lib/build/ccmf.js') here
+					| .
