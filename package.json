@@ -10,9 +10,7 @@
 	  "express-validator": "*",
 	  "jade": "*",
 	  "firebase":"*",
-	  "ccmf":"*",
-	  "browserify":"*",
-	  "passport":"*"
+	  "ccmf":"*"
   },
   "devDependencies":{
 	  "tap": "*"
