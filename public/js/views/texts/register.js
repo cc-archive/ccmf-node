@@ -21,7 +21,6 @@ registerPage = function () {
 registerPage.prototype = {
 				
 		init: function(){
-			console.log(local_data);
 		},
 		
 		registerText:function(event){
@@ -40,16 +39,24 @@ registerPage.prototype = {
 			
 			/* Register the Signature into the Registry*/
 			
-			dataMod.storeLsh(minHashSignature,null,{
-														author:
-														{
-															first:local_data.first,
-															last:local_data.last,
-															email:local_data.email
-														}
-												   }
+			dataMod.storeLsh(minHashSignature,
+							 function(error){
+								if(error===null){
+									jQuery('#result > span').text('Text Registered');
+								}
+								else{
+									jQuery('#result > span').text('Register Failed');
+								}
+							}
+							,
+							{
+							 author:
+								{
+									first:local_data.first,
+									last:local_data.last,
+									email:local_data.email
+								}
+						    }
 			);
-			
-			jQuery('#result > span').text('Text Registered');
 		}
 };
