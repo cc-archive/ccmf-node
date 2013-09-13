@@ -7,9 +7,9 @@
   },
   "dependencies": {
 	  "express": "3.3.4",
-	  "jade": "*",
-	  "firebase":"*",
-	  "ccmf":"*"
+	  "jade": "0.35.0",
+	  "firebase":"0.6.3",
+	  "ccmf":"1.0.1"
   },
   "devDependencies":{
 	  "tap": "*"
