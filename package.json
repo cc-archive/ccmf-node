@@ -9,7 +9,7 @@
 	  "express": "3.3.4",
 	  "jade": "0.35.0",
 	  "firebase":"0.6.3",
-	  "ccmf":"1.0.1"
+	  "ccmf":"git://github.com/ethanlim/ccmf.git#master"
   },
   "devDependencies":{
 	  "tap": "*"
