@@ -3,7 +3,6 @@
  */
 
 var express = require('express')
-  , expressValidator = require('express-validator')
   , routes = require('./routes')
   , http = require('http')
   , path = require('path');
@@ -20,7 +19,6 @@ app.configure(function(){
 	app.set('layout',__dirname + '/views/templates/layout');
 	app.set('view engine', 'jade');
 	app.set('firebase ref','https://ccmf.firebaseio.com/');
-	app.use(expressValidator());
 	app.use(express.favicon());
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());
