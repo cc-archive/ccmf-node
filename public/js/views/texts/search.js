@@ -20,8 +20,6 @@ searchSigPage = function () {
 searchSigPage.prototype = {
 		
 		obj : this,
-		signatureSetsFound : null,
-		totalSignatureFound: 0,
 		
 		init: function(){
 		},
@@ -30,29 +28,24 @@ searchSigPage.prototype = {
 			jQuery('#result-area > table tbody').empty();
 		},
 		
-		callback :function(snapshot){
-		
-			/* Search through each band */
-			if(snapshot.val()!=null){ 
-				 /* If found in current band */
-				var foundSignatureSet = snapshot.val(),
-				keys = Object.keys(foundSignatureSet),
-				key = null;
+		callback :function(results){
+			
+			if(results.count!=0){
+			
+				var resultSets = results['sets'],
+					metadata = null,
+					author = null,
+					set = null;
 				
-				searchSigPage.totalSignatureFound++;
-				console.log('Found Signature! Total Signature Found: '+searchSigPage.totalSignatureFound); 
-				
-				for(key=0;key<keys.length;key++){
-					if(searchSigPage.signatureSetsFound.indexOf(foundSignatureSet[keys[key]])==-1){
-
-						searchSigPage.signatureSetsFound.push(foundSignatureSet[keys[key]]);
-						
-						signatureInfo = JSON.parse(foundSignatureSet[keys[key]]);
-						
-						searchSigPage.prototype.popTable(searchSigPage.totalSignatureFound,signatureInfo);
-					}
-				} 
-				
+				for(var result=0;result<results.count;result++){
+					
+					set = JSON.parse(resultSets[result]);
+					
+					metadata = set['metadata'];
+					author = metadata['author'];
+					
+					searchSigPage.prototype.addNewSigToTable(result, set['sig'],author['first'],author['last'], author['email']);
+				}
 			}
 		},
 		
@@ -61,8 +54,8 @@ searchSigPage.prototype = {
 			var obj = event.data;
 			
 			var textToBeSearch = jQuery('#search-area > textarea').val();
+			
 			obj.clearResultTable();
-			console.log("Table Cleared");
 			
 			var textMod = ccmf.Text.create();
 			var dataMod = ccmf.Data.create();
@@ -74,14 +67,14 @@ searchSigPage.prototype = {
 			
 			var minHashSignature = textMod.minHashSignaturesGen(signature); 
 			
-			searchSigPage.totalSignatureFound = 0;
-			searchSigPage.signatureSetsFound = [];
 			dataMod.conductLsh(minHashSignature,obj.callback);
 		},
 
-		popTable: function(sigNo,signatureInfo){
-			jQuery('#result-area > table tbody').append("<tr><td>"+sigNo+"<td>" + signatureInfo['sig'][0] + "...</td>" +
-					"<td>"+signatureInfo['metadata']['author']['first']+' '+signatureInfo['metadata']['author']['last']+
-					"<td>"+signatureInfo['metadata']['author']['email']+"</td>"+"</tr>");
+		addNewSigToTable: function(sigNo,signature,author_first,author_last,author_email){
+			jQuery('#result-area > table tbody').append(
+					"<tr><td>"+sigNo+"</td>"+
+					"<td>"+signature.toString().substring(0,30)+ "...</td>" +
+					"<td>"+author_first+' '+author_last+"</td>"+
+					"<td>"+author_email+"</td></tr>");
 		}
 };
