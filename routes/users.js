@@ -67,6 +67,7 @@ module.exports = function(app){
 	/* Sign Up 	*/
 	
 	app.get('/users/signup',function(req,res){
+		//Render the signup page
 		res.render('users/signup',{
 									title:"Sign Up"
 								  }
