@@ -75,17 +75,7 @@ module.exports = function(app){
 	});
 	
 	app.post('/users/signup',function(req,res){
-		
-		var render = function(htmlVar) {
-		    res.render('./users/signup', 
-		    		{
-		    			title	:"Sign Up",
-						flash	:htmlVar.flash,
-					    user	:htmlVar.user
-		    		}		
-		    );
-		};
-		
+			
 		var md5sum = Crypto.createHash('md5');
 		
 		/* Obtain the form data */ 
@@ -107,11 +97,21 @@ module.exports = function(app){
 			},
 			password:pw,
 			work:null,
-		});
-		
-		render({
-			flash	:"Thank you for registering",
-			user	:req.body.user
+		},
+		function(error){
+
+			if(error){
+				
+				
+				
+			}else{
+				 req.session.user = new Object;
+				 req.session.user['email'] = email;
+				 req.session.user['first'] = firstName;
+				 req.session.user['last'] = lastName;
+				 
+				 res.redirect('/');
+			}
 		});
 	});
 	
