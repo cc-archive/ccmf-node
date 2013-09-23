@@ -13,7 +13,7 @@ var app = express();
 
 // all environments
 app.configure(function(){
-	app.set('port', process.env.PORT || 80);
+	app.set('port', process.env.PORT || 3000);
 	app.set('env','development');
 	app.set('views', __dirname + '/views');
 	app.set('layout',__dirname + '/views/templates/layout');
