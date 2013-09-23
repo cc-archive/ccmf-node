@@ -4,6 +4,6 @@
 
 module.exports = function(app){
 	app.get('/',function(req,res){
-		  res.render('index', { title: 'Creative Common\'s Media Fingerprint Library' });
+		  res.render('index', { title: 'Creative Commons Media Fingerprint Library' });
 	});
 };
