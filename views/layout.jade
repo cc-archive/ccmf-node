@@ -20,21 +20,21 @@ html
 		block head
 body
 	div.row-fluid#banner-section
-		div.span12
+		div
 			include includes/banner
-	div.container-fluid
+	div.container-fluid.span12
 		div.row-fluid#header-section
-			div.span12
+			div
 				block header
 		div.row-fluid#flash-section
 			div.span6.offset5
 				block flash
 		div.row-fluid#nav-section
-			div.span6.offset3
+			div.span9.offset2
 				include includes/navbar
 		div.row-fluid#content-section
-			div.span12
+			div
 				block content
 		div.row-fluid#footer-section
-			div.span12.footer
+			div.footer
 				block footer

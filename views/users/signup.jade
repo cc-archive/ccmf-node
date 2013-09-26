@@ -6,8 +6,8 @@ block header
 			h1= title
 block content
 	div.row-fluid
-		legend.span6.offset3 Sign Up
-		form.form-horizontal.span3.offset3(method='post',action='/users/signup')
+		legend.span7.offset3 Sign Up
+		form.form-horizontal.span3.offset2(method='post',action='/users/signup')
 			div.control-group
 				label.control-label(for='inputFirstName') First Name
 				div.controls
@@ -39,8 +39,8 @@ block content
 					input(type='password',id='inputPWAgain',placeholder='Re-enter Password',name='user[repw]')
 			div.control-group
 				div.controls
-					button.btn(type='submit') Sign Up
-		div.span2
+					button.btn(type='submit') Register
+		div.span2.offset3
 			div.row
 				img(src='http://ccmf.s3.amazonaws.com/img/views/users/register/register.jpg').img-rounded
 			div.row

@@ -14,10 +14,10 @@ a{
 	cursor:pointer;
 }
 
-.container-fluid {
+.container {
     margin: 0 auto;
     height: 100%;
-    padding: 20px 0;
+    padding: 1% 0;
  
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -29,10 +29,11 @@ a{
 }
 
 #header-section{
-	height: 12%;
+	height: 10%;
 }
 
 #flash-section{
+	margin-top:3%;
 	margin-bottom:2%;
 }	
 
